@@ -124,7 +124,7 @@ ul {
 .benefit img {
     float:left;
     padding-right: 1.875rem;
-    padding-bottom: 3.124rem;
+    padding-bottom: 4rem;
 }
 
 .benefit .text {
@@ -442,10 +442,10 @@ ul {
     }
     .header__items li{
         font-size: 0.875rem;
-        line-height: 1.0625rem;
+        line-height: 1rem;
     }
     .header__item:not(:last-child) {
-        margin-right: 1rem;
+        margin-right: 1.125rem;
     }
     .first img {
         width: 22.5rem;
@@ -626,7 +626,10 @@ ul {
         margin-block-end: 0em;
     }
     .review {
-        width: 11.5625rem;
+        width: 11.125rem;
+    }
+    .rewiew t{
+
     }
     .review h3{
         font-family: 'Montserrat', sans-serif;
