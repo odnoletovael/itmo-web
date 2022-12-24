@@ -1,27 +1,19 @@
 <?php 
+
+    require("db.php");
+
     if (isset($_POST['submit'])) {
-        // url введенный пользователем
+        
         $imgitem = $_POST['imgitem'];
-        // название товара введенного пользователем
+    
         $nameitem = $_POST['nameitem'];
-        // бренд введенный пользователем
+    
         $branditem = $_POST['branditem'];
 
-        $xml = simplexml_load_file("data.xml");
+        $id = $db->query("SELECT MAX(id) from items")->fetchAll()[0][0]+ 1;
 
-        // обращаемся к последнему эл-ту
-        $lastEl = $xml->item[$xml->count() - 1];
+        $db->query("INSERT INTO items (id, img_path, name, brand) VALUE ('$id+1', '$imgitem', '$nameitem', '$branditem')");
 
-        // создаем тег корневой item 
-        $newitem = $xml->addChild('item', '');
-        $newitem->addChild('name', $nameitem);
-        $newitem->addChild('brand', $branditem);
-        $newitem->addChild('img', $imgitem);
-
-        // добавляем атрибут id на один больше чем у последнего
-        $newitem->addAttribute('id', $lastEl['id'] + 1);
-
-        $xml->saveXML("data.xml");
 
         echo "<script>
         alert('Товар добавлен!');
@@ -41,7 +33,7 @@
 </head>
 <body>
     <form action="" method="POST">
-        <input type="text" name="imgitem" placeholder="url вещи">
+        <input type="text" name="imgitem" required placeholder="url вещи">
         <br>
         <input type="text" name="nameitem" required placeholder="введите название вещи">
         <br>
